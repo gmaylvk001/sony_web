@@ -39,7 +39,7 @@ const audioProducts = [
   {
     id: "audio-3",
     title: "Home Theatre & Soundbars",
-    image: "/uploads/Audio-Home Theatre & Soungbars-3.avif",
+    image: "/uploads/Audio-Home Theatre & Soungbars-4.png",
   },
   {
     id: "audio-4",

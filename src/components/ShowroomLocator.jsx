@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import "./ShowroomLocator.css";
 
 const showroomImages = [
-  { id: 1, src: "/uploads/sonyCenterShowroom1.jpeg", alt: "Sony Center Showroom 1" },
   { id: 2, src: "/uploads/sonyCenterShowroom2.jpeg", alt: "Sony Center Showroom 2" },
   { id: 3, src: "/uploads/sonyCenterShowroom3.png", alt: "Sony Center Showroom 3" },
   { id: 4, src: "/uploads/sonyCenterShowroom4.jpeg", alt: "Sony Center Showroom 4" },
@@ -61,50 +60,11 @@ export default function ShowroomLocator() {
   const whatsappUrl =
     "https://wa.me/919965544323?text=Hi%20Sony%20Center%20Tiruppur,%20I%20would%20like%20to%20enquire%20about%20products";
 
-  // Typewriter effect specifically for "Tiruppur"
-  const targetWord = "Tiruppur";
-  const [currentText, setCurrentText] = useState("");
-  const [isDeleting, setIsDeleting] = useState(false);
-
-  useEffect(() => {
-    let timer;
-
-    if (!isDeleting && currentText === targetWord) {
-      // Pause when "Tiruppur" is fully typed
-      timer = setTimeout(() => {
-        setIsDeleting(true);
-      }, 2000);
-    } else if (isDeleting && currentText === "") {
-      // Pause when deleted before typing again
-      timer = setTimeout(() => {
-        setIsDeleting(false);
-      }, 500);
-    } else {
-      const speed = isDeleting ? 75 : 140;
-      timer = setTimeout(() => {
-        setCurrentText((prev) =>
-          isDeleting
-            ? targetWord.substring(0, prev.length - 1)
-            : targetWord.substring(0, prev.length + 1)
-        );
-      }, speed);
-    }
-
-    return () => clearTimeout(timer);
-  }, [currentText, isDeleting]);
-
   return (
     <section id="showroom" ref={showroomRef} className="showroom-section">
-      {/* Centered Section Header with Typewriter "Tiruppur" */}
+      {/* Centered Section Header */}
       <div className="showroom-header-wrapper">
-        <h2 className="showroom-title">
-          <span className="showroom-prefix">Our</span>
-          <span className="showroom-dynamic-container">
-            <span className="showroom-dynamic">{currentText}</span>
-            <span className="showroom-cursor">|</span>
-          </span>
-          <span className="showroom-suffix">Showroom Locator</span>
-        </h2>
+        <h2 className="showroom-title">Our Showroom Locator</h2>
         <div className="showroom-underline" />
       </div>
 
@@ -198,10 +158,6 @@ export default function ShowroomLocator() {
             Sony Center - Palladam Main Road, Tiruppur
           </h3>
 
-          <p className="store-type-subtext">
-            Electronics & Home Appliances Store in Tiruppur
-          </p>
-
           {/* Detailed Info List */}
           <div className="info-items-list">
             {/* Address */}
@@ -246,8 +202,8 @@ export default function ShowroomLocator() {
               >
                 <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
               </svg>
-              <a href="tel:9965544323" className="info-link">
-                9965544323
+              <a href="tel:+919965544323" className="info-link">
+                +91 9965544323
               </a>
             </div>
 
@@ -307,19 +263,19 @@ export default function ShowroomLocator() {
               className="store-btn btn-whatsapp"
             >
               <svg
-                width="20"
-                height="20"
+                width="18"
+                height="18"
                 viewBox="0 0 24 24"
                 fill="currentColor"
                 style={{ flexShrink: 0 }}
               >
-                <path d="M17.472 14.382c-.301-.15-1.781-.879-2.056-.98-.276-.101-.476-.15-.676.15-.2.301-.776.98-.952 1.18-.175.201-.351.226-.652.075-.301-.15-1.272-.469-2.422-1.495-.895-.798-1.5-1.783-1.676-2.084-.175-.301-.019-.464.132-.614.136-.135.301-.351.451-.527.151-.175.201-.301.301-.501.101-.201.05-.376-.025-.527-.075-.15-.677-1.632-.927-2.233-.244-.585-.492-.505-.677-.515-.175-.009-.376-.011-.577-.011s-.527.075-.802.376c-.276.301-1.053 1.028-1.053 2.508s1.078 2.908 1.229 3.109c.15.201 2.121 3.24 5.138 4.544.718.311 1.278.497 1.716.636.721.229 1.377.197 1.895.12.578-.087 1.781-.728 2.032-1.431.251-.703.251-1.305.176-1.431-.076-.126-.276-.201-.577-.352zm-5.466 7.618c-2.052 0-3.957-.594-5.568-1.621l-.399-.256-4.14 1.086 1.105-4.037-.28-.445c-1.127-1.79-1.724-3.864-1.724-5.992 0-6.195 5.04-11.235 11.236-11.235 3.003 0 5.825 1.17 7.949 3.295 2.123 2.124 3.291 4.947 3.29 7.952-.002 6.197-5.043 11.253-11.469 11.253zm0-24c-7.28 0-13.2 5.92-13.2 13.2 0 2.327.608 4.599 1.764 6.602l-1.87 6.834 7.006-1.838c1.942 1.06 4.129 1.62 6.3 1.62 7.28 0 13.2-5.92 13.2-13.2s-5.92-13.218-13.2-13.218z" />
+                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
               </svg>
               WhatsApp
             </a>
 
             {/* 3. Call Store */}
-            <a href="tel:9965544323" className="store-btn btn-call-store">
+            <a href="tel:+919965544323" className="store-btn btn-call-store">
               <svg
                 width="15"
                 height="15"

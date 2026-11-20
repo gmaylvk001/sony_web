@@ -79,7 +79,7 @@ const playstationProducts = [
   },
   {
     id: "ps-2",
-    title: "GamePads",
+    title: "Playstation Accessories",
     image: "/uploads/PlayStation-GamePads-2.png",
   },
   {

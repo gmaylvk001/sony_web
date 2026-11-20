@@ -116,8 +116,8 @@ export default function Navbar() {
       <div className="nav-actions">
         <a
           className="btn btn-secondary"
-          href="tel:9965544323"
-          title="Call store at 9965544323"
+          href="tel:+919965544323"
+          title="Call store at +91 9965544323"
         >
           {/* Phone Icon */}
           <svg
@@ -147,7 +147,7 @@ export default function Navbar() {
       <div className="mobile-nav-controls">
         <a
           className="mobile-call-btn"
-          href="tel:9965544323"
+          href="tel:+919965544323"
           title="Call store"
           aria-label="Call store"
         >
@@ -202,7 +202,7 @@ export default function Navbar() {
           <div className="mobile-drawer-actions">
             <a
               className="mobile-action-btn mobile-call-action"
-              href="tel:9965544323"
+              href="tel:+919965544323"
             >
               <svg
                 width="16"

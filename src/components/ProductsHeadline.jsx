@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./ProductsHeadline.css";
 
-const productCategories = ["TVs", "Audio", "Cameras", "PlayStation"];
+const productCategories = ["Television", "Audio", "Camera", "PlayStation"];
 
 export default function ProductsHeadline() {
   const [wordIndex, setWordIndex] = useState(0);

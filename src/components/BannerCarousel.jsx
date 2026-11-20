@@ -5,7 +5,6 @@ const banners = [
   { id: 1, src: "/uploads/banner1.webp", alt: "Sony Banner 1" },
   { id: 2, src: "/uploads/banner2.webp", alt: "Sony Banner 2" },
   { id: 3, src: "/uploads/banner3.webp", alt: "Sony Banner 3" },
-  { id: 4, src: "/uploads/banner4.webp", alt: "Sony Banner 4" },
 ];
 
 export default function BannerCarousel() {

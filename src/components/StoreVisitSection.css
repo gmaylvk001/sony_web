@@ -1,0 +1,365 @@
+.store-visit-section {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto 100px;
+  padding: 0 24px;
+  box-sizing: border-box;
+}
+
+.store-visit-card {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  background-color: #0d0d0f;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+  min-height: 540px;
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.store-visit-card.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Left Column: Details */
+.store-visit-details {
+  padding: 48px 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 28px;
+}
+
+.store-visit-title {
+  font-size: 38px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 16px 0;
+  letter-spacing: -0.02em;
+}
+
+.store-address-block {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #d4d4d8;
+}
+
+.store-address-block strong {
+  color: #ffffff;
+  font-weight: 600;
+  display: block;
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+/* Action Buttons Row */
+.store-visit-buttons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+.pill-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  border-radius: 9999px;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: #ffffff;
+  background-color: #1a1a1e;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.pill-btn:hover {
+  background-color: #27272c;
+  border-color: rgba(255, 255, 255, 0.35);
+  transform: translateY(-1px);
+}
+
+/* Hours Schedule */
+.store-hours-block {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 20px;
+}
+
+.hours-heading {
+  font-size: 11px;
+  font-weight: 700;
+  color: #71717a;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 12px;
+}
+
+.hours-table {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.hours-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.hours-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.hours-day {
+  color: #a1a1aa;
+}
+
+.hours-time {
+  color: #ffffff;
+  font-weight: 500;
+}
+
+/* Amenities / Badges List */
+.store-amenities-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 20px;
+}
+
+.amenity-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13.5px;
+  color: #a1a1aa;
+}
+
+.amenity-icon {
+  font-size: 16px;
+  color: #8c8c90;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Right Column: Map Embed */
+.store-map-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 480px;
+  background-color: #111114;
+  overflow: hidden;
+}
+
+.store-map-iframe {
+  width: 100%;
+  height: 100%;
+  min-height: 480px;
+  border: 0;
+  /* Sleek dark mode filter for Google Maps */
+  filter: invert(90%) hue-rotate(180deg) contrast(1.15) brightness(0.95);
+  display: block;
+}
+
+/* Exact Store Location: Floating White Marker Pin */
+.map-floating-pin {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.map-floating-pin:hover {
+  transform: translate(-50%, -108%) scale(1.08);
+}
+
+.white-pin-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.white-pin-icon {
+  width: 38px;
+  height: 38px;
+  fill: #ffffff;
+  color: #ffffff;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.9))
+          drop-shadow(0 0 14px rgba(255, 255, 255, 0.55));
+  display: block;
+  transition: filter 0.25s ease;
+}
+
+.map-floating-pin:hover .white-pin-icon {
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.95))
+          drop-shadow(0 0 22px rgba(255, 255, 255, 0.85));
+}
+
+/* Ground contact dot right at the coordinate point */
+.white-pin-ground-dot {
+  position: absolute;
+  bottom: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.9);
+}
+
+/* Pulsing radar ring indicating the active store location */
+.white-pin-pulse {
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 22px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.75);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+  animation: whitePinPulse 2.2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+  pointer-events: none;
+}
+
+@keyframes whitePinPulse {
+  0% {
+    transform: translateX(-50%) scale(0.4);
+    opacity: 0.9;
+  }
+  70% {
+    transform: translateX(-50%) scale(2.2);
+    opacity: 0.15;
+  }
+  100% {
+    transform: translateX(-50%) scale(2.6);
+    opacity: 0;
+  }
+}
+
+/* Responsive */
+@media (max-width: 960px) {
+  .store-visit-section {
+    padding: 0 16px;
+    margin: 0 auto 60px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+  .store-visit-card {
+    grid-template-columns: minmax(0, 1fr);
+    width: 100%;
+    max-width: 440px;
+    margin: 0 auto;
+    min-height: auto;
+    box-sizing: border-box;
+  }
+  .store-visit-details {
+    padding: 28px 20px;
+    gap: 22px;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+  .store-map-wrapper {
+    min-height: 300px;
+    height: 300px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  .store-map-iframe {
+    min-height: 300px;
+    height: 300px;
+  }
+  .store-visit-title {
+    font-size: 26px;
+  }
+}
+
+@media (max-width: 540px) {
+  .store-visit-section {
+    padding: 0 12px;
+    margin: 0 auto 46px;
+  }
+  .store-visit-card {
+    border-radius: 16px;
+  }
+  .store-visit-details {
+    padding: 22px 16px;
+    gap: 18px;
+  }
+  .store-visit-title {
+    font-size: 22px;
+    margin-bottom: 8px;
+  }
+  .store-address-block {
+    font-size: 13.5px;
+  }
+  .store-visit-buttons {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+  .pill-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 10px 16px;
+    font-size: 13px;
+    box-sizing: border-box;
+  }
+  .store-hours-block {
+    padding-top: 14px;
+  }
+  .hours-row {
+    font-size: 13px;
+  }
+  .store-amenities-list {
+    padding-top: 14px;
+    gap: 10px;
+  }
+  .amenity-item {
+    font-size: 12.5px;
+    gap: 10px;
+  }
+  .store-map-wrapper {
+    min-height: 260px;
+    height: 260px;
+  }
+  .store-map-iframe {
+    min-height: 260px;
+    height: 260px;
+  }
+  .white-pin-icon {
+    width: 32px;
+    height: 32px;
+  }
+}

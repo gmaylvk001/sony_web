@@ -89,8 +89,25 @@ const playstationProducts = [
   },
 ];
 
-export default function ProductGrids() {
+export default function ProductGrids({ onProductClick }) {
   const containerRef = useRef(null);
+
+  const handleProductClick = (product, category) => {
+    if (onProductClick) {
+      onProductClick({ ...product, category, _timestamp: Date.now() });
+    } else {
+      const contactSection = document.getElementById("contact");
+      if (contactSection) {
+        const navbar = document.querySelector(".sony-navbar");
+        const navbarHeight = navbar ? navbar.offsetHeight : 80;
+        const elementTop = contactSection.getBoundingClientRect().top + window.pageYOffset;
+        window.scrollTo({
+          top: elementTop - navbarHeight - 16,
+          behavior: "smooth",
+        });
+      }
+    }
+  };
 
   // IntersectionObserver to animate cards moving up into place on scroll
   useEffect(() => {
@@ -137,6 +154,16 @@ export default function ProductGrids() {
               key={product.id}
               className="product-card"
               style={{ transitionDelay: `${index * 90}ms` }}
+              onClick={() => handleProductClick(product, "TVs")}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  handleProductClick(product, "TVs");
+                }
+              }}
+              title={`Click to enquire about ${product.title}`}
             >
               <div className="product-img-wrapper">
                 <img
@@ -165,6 +192,16 @@ export default function ProductGrids() {
               key={product.id}
               className="product-card"
               style={{ transitionDelay: `${index * 80}ms` }}
+              onClick={() => handleProductClick(product, "Audio")}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  handleProductClick(product, "Audio");
+                }
+              }}
+              title={`Click to enquire about ${product.title}`}
             >
               <div className="product-img-wrapper">
                 <img
@@ -192,6 +229,16 @@ export default function ProductGrids() {
               key={product.id}
               className="product-card"
               style={{ transitionDelay: `${index * 90}ms` }}
+              onClick={() => handleProductClick(product, "Cameras")}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  handleProductClick(product, "Cameras");
+                }
+              }}
+              title={`Click to enquire about ${product.title}`}
             >
               <div className="product-img-wrapper">
                 <img
@@ -220,6 +267,16 @@ export default function ProductGrids() {
               key={product.id}
               className="product-card"
               style={{ transitionDelay: `${index * 90}ms` }}
+              onClick={() => handleProductClick(product, "PlayStation")}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  handleProductClick(product, "PlayStation");
+                }
+              }}
+              title={`Click to enquire about ${product.title}`}
             >
               <div className="product-img-wrapper">
                 <img

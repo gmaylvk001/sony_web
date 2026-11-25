@@ -119,7 +119,8 @@
 }
 
 .form-input::placeholder,
-.form-textarea::placeholder {
+.form-textarea::placeholder,
+.phone-input::placeholder {
   color: #71717a;
   font-size: 14px;
 }

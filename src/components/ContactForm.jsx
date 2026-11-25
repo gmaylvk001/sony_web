@@ -19,7 +19,7 @@ const getEndpoints = () => {
       envUrl,
       isLocal
         ? "http://localhost:3000/api/sony-center/lead"
-        : "https://bharathelectronics.in/api/sony-center/lead",
+        : "https://www.bharathelectronics.in/api/sony-center/lead",
     ];
   }
 
@@ -34,7 +34,7 @@ const getEndpoints = () => {
       ];
 };
 
-export default function ContactForm() {
+export default function ContactForm({ selectedProduct }) {
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -48,6 +48,25 @@ export default function ContactForm() {
   const [errorMessage, setErrorMessage] = useState(null);
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
+
+  // If a product was selected from "Our Products", pre-fill the message and focus
+  useEffect(() => {
+    if (selectedProduct) {
+      const categoryPrefix = selectedProduct.category ? `${selectedProduct.category} - ` : "";
+      setFormData((prev) => ({
+        ...prev,
+        message: `I'm interested in ${categoryPrefix}${selectedProduct.title}. Please provide more details and pricing.`,
+      }));
+
+      // Focus the name input after smooth scroll arrives
+      setTimeout(() => {
+        const nameInput = document.getElementById("name");
+        if (nameInput) {
+          nameInput.focus();
+        }
+      }, 600);
+    }
+  }, [selectedProduct]);
 
   // Trigger right-to-left slide animation when entering the viewport
   useEffect(() => {
@@ -74,7 +93,13 @@ export default function ContactForm() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    if (name === "phone") {
+      // Restrict mobile number to only digits and maximum 10 digits
+      const digitsOnly = value.replace(/\D/g, "").slice(0, 10);
+      setFormData((prev) => ({ ...prev, phone: digitsOnly }));
+    } else {
+      setFormData((prev) => ({ ...prev, [name]: value }));
+    }
     if (errorMessage) setErrorMessage(null);
   };
 
@@ -82,13 +107,13 @@ export default function ContactForm() {
     e.preventDefault();
     setErrorMessage(null);
 
-    // 1. Phone validation
+    // 1. Phone validation: exactly 10 digits required
     const digitsOnly = formData.phone.replace(/\D/g, "");
-    if (digitsOnly.length < 10) {
+    if (digitsOnly.length !== 10) {
       setErrorMessage("Please enter a valid 10-digit mobile number.");
       return;
     }
-    const cleanPhone = digitsOnly.slice(-10);
+    const cleanPhone = digitsOnly;
 
     // 2. Email format validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -225,6 +250,10 @@ export default function ContactForm() {
                     id="phone"
                     name="phone"
                     required
+                    inputMode="numeric"
+                    maxLength={10}
+                    pattern="[0-9]{10}"
+                    placeholder="10-digit mobile number"
                     value={formData.phone}
                     onChange={handleChange}
                     disabled={loading}
